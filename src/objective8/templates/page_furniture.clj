@@ -85,9 +85,8 @@
 
 ;; WRITER LIST
 
-
 (html/defsnippet invite-writer-form
-  library-html [:.clj-invite-a-writer-form] [{:keys [translations data]}]
+  library-html [:.clj-invite-a-writer-form] [{:keys [data]}]
   [:.clj-invite-a-writer-form] (html/prepend (html/html-snippet (anti-forgery-field))))
 
 (html/defsnippet sign-in-to-invite-writer
@@ -103,9 +102,7 @@
     (invite-writer-form context)
     (sign-in-to-invite-writer context)))
 
-(html/defsnippet empty-writer-list-item
-  library-html [:.clj-empty-writer-list-item] [{translations :translations}]
-  [:.clj-empty-writer-list-item] (html/content (translations :candidate-list/no-candidates)))
+(def empty-writer-list-item-snippet (html/select library-html-resource [:.clj-empty-writer-list-item]))
 
 (html/defsnippet writer-list-items
   library-html [:.clj-writer-item-without-photo] [candidates]
@@ -117,7 +114,7 @@
 (defn writer-list [context]
   (let [candidates (get-in context [:data :candidates])]
     (if (empty? candidates)
-      (empty-writer-list-item context)
+      empty-writer-list-item-snippet 
       (writer-list-items candidates))))
 ;; ANSWER LIST
 
