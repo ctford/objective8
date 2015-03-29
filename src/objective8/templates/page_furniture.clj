@@ -71,7 +71,7 @@
   [:.clj-flash-message-bar-text] (html/content flash))
 
 (html/defsnippet status-flash-bar
-  library-html [:.clj-status-bar] [{:keys [doc translations] :as context}]
+  library-html [:.clj-status-bar] [{:keys [doc] :as context}]
   [:.clj-status-bar] (if-let [flash (:flash doc)] 
                        (html/substitute (flash-bar flash))
                        identity))
@@ -79,15 +79,9 @@
 
 ;; DRAFTING HAS STARTED MESSAGE
 
-(html/defsnippet drafting-message library-html [:.clj-drafting-message] [{{objective :objective} :data
-                                                                          translations :translations
-                                                                          :as context}]
+(html/defsnippet drafting-message library-html [:.clj-drafting-message] [{{objective :objective} :data :as context}]
   [html/any-node] (when (:drafting-started objective) identity)
-  [:.clj-drafting-message-title] (html/content (translations :notifications/drafting-message-title))
-  [:.clj-drafting-message-body] (html/content (translations :notifications/drafting-message-body))
-  [:.clj-drafting-message-link] (html/do->
-                                  (html/set-attr "href" (str "/objectives/" (:_id objective) "/drafts"))
-                                  (html/content (translations :notifications/drafting-message-link))))
+  [:.clj-drafting-message-link] (html/set-attr "href" (str "/objectives/" (:_id objective) "/drafts")))
 
 ;; WRITER LIST
 

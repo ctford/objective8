@@ -38,12 +38,9 @@ draft-guidance,heading,What is a draft?
 draft-guidance,text-line-1,Drafts are versions of the policy as it is being written.
 draft-guidance,text-line-2,Drafts are crafted by the writers that have been nominated for an objective.
 draft-guidance,text-line-3,Everyone can comment and make suggestions.
-notifications,go-to-drafting,here.
-notifications,drafting-has-started,Drafting has started on this objective!
-notifications,drafting-started-helper-text,"This means that you can no longer ask or answer questions, comment, or invite new writers.  However, you can follow and contribute to the drafting progress "
-notifications,drafting-message-title,Drafting has started on this objective!
-notifications,drafting-message-body,"This means that you can no longer ask or answer questions, comment, or invite new writers."
-notifications,drafting-message-link,Contribute to the drafting progress.
+drafting-message,title,Drafting has started on this objective!
+drafting-message,body,"This means that you can no longer ask or answer questions, comment, or invite new writers."
+drafting-message,link,Contribute to the drafting progress.
 index,doc-title,Objective[8]
 index,doc-description,Objective[8]
 index,index-welcome,Collaborative policy making for democratic organisations.
