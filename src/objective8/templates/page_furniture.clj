@@ -88,14 +88,7 @@
 
 (html/defsnippet invite-writer-form
   library-html [:.clj-invite-a-writer-form] [{:keys [translations data]}]
-  [:.clj-invite-a-writer-form] (html/prepend (html/html-snippet (anti-forgery-field)))
-  [:.l8n-label-writer-name] (html/content (translations :invite-writer/writer-name-label))
-  [:.l8n-input-writer-name] (html/set-attr "title" (translations :invite-writer/writer-name-attr-title))
-  [:.l8n-label-writer-email] (html/content (translations :invite-writer/writer-email-label))
-  [:.l8n-input-writer-email] (html/set-attr "title" (translations :invite-writer/writer-email-attr-title))
-  [:.l8n-label-writer-reason] (html/content (translations :invite-writer/writer-reason-label))
-  [:.l8n-input-writer-reason] (html/set-attr "title" (translations :invite-writer/writer-reason-attr-title))
-  [:.l8n-button-invite-writer] (html/content (translations :invite-writer/invite-button)))
+  [:.clj-invite-a-writer-form] (html/prepend (html/html-snippet (anti-forgery-field))))
 
 (html/defsnippet sign-in-to-invite-writer
   library-html [:.clj-please-sign-in] [{:keys [translations ring-request]}]
