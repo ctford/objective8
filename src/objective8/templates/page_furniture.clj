@@ -1,5 +1,6 @@
 (ns objective8.templates.page-furniture
   (:require [net.cgrand.enlive-html :as html]
+            [clojure.string :as string]
             [ring.util.anti-forgery :refer [anti-forgery-field]]
             [objective8.utils :as utils]))
 
@@ -22,31 +23,47 @@
     (map (fn [p] (html/html [:p p])) (clojure.string/split text
                                                            newline-followed-by-optional-whitespace)))))
 
+(defn- node->l8n-class-names [node]
+  (re-seq #"l8n--\S+" (get-in node [:attrs :class])))
+
+(defn- apply-translation [node translation l8n-opts]
+  (if translation
+    (case (first l8n-opts)
+      "html" (assoc node :content (html/html-snippet translation))
+      "attr" (assoc-in node [:attrs (keyword (second l8n-opts))] translation) 
+      nil (assoc node :content translation))
+    (do (prn node)
+        node)))
+
+(defn- apply-translations [l8n-classes node translations]
+  (let [[l8n-class & more] l8n-classes
+        [_ l8n-namespace l8n-key & l8n-opts] (string/split l8n-class #"--") 
+        translation-key (keyword l8n-namespace l8n-key) 
+        translation (translations translation-key)]
+    (if more
+      (apply-translation (apply-translations more node translations) translation l8n-opts)
+      (apply-translation node translation l8n-opts))))
+
+(defn- translate-node [node {:keys [translations] :as context}]
+  (let [l8n-classes (node->l8n-class-names node)] 
+    (apply-translations l8n-classes node translations)))
+
+(defn translate [context nodes]
+  (html/at nodes
+    [(html/attr-contains :class "l8n--")] #(translate-node % context)))
+
 ;; MASTHEAD
 
 (def masthead-snippet (html/select library-html-resource [:.clj-masthead-signed-out])) 
 (def masthead-signed-in-snippet (html/select library-html-resource [:.clj-masthead-signed-in]))
 
-(defn masthead [{{uri :uri} :ring-request :keys [translations  user] :as context}]
-  (let [tl8 (translator context)]
-    (html/at masthead-snippet
-             [:.clj-masthead-signed-out] (if user
-                                           (html/substitute masthead-signed-in-snippet)
-                                           identity)
-             [:.clj-masthead-skip-text] (tl8 :masthead/skip-to-navigation)
-             [:.clj-masthead-logo] (html/set-attr "title" (translations :masthead/logo-title-attr))
-             [:.clj-masthead-objectives-link] (html/do->
-                                                (html/set-attr "title" (translations :masthead/objectives-link-title-attr))
-                                                (tl8 :masthead/objectives-link))
-             [:.clj-masthead-about-link] (html/do->
-                                           (html/set-attr "title" (translations :masthead/about-link-title-attr))
-                                           (tl8 :masthead/about-link))
-             [:.clj-masthead-sign-in] (html/set-attr "title" (translations :navigation-global/sign-in-title))
-             [:.clj-masthead-sign-in] (html/set-attr "href" (str "/sign-in?refer=" uri))
-             [:.clj-masthead-sign-in-text] (tl8 :navigation-global/sign-in-text)
-             [:.clj-masthead-sign-out] (html/set-attr "title" (translations :navigation-global/sign-out-title))
-             [:.clj-masthead-sign-out-text] (tl8 :navigation-global/sign-out-text)
-             [:.clj-username] (html/content (:username user)))))
+(defn masthead [{{uri :uri} :ring-request :keys [user] :as context}]
+  (html/at masthead-snippet
+           [:.clj-masthead-signed-out] (if user
+                                         (html/substitute masthead-signed-in-snippet)
+                                         identity)
+           [:.clj-masthead-sign-in] (html/set-attr "href" (str "/sign-in?refer=" uri))
+           [:.clj-username] (html/content (:username user))))
 
 ;; STATUS BAR
 
@@ -57,8 +74,7 @@
   library-html [:.clj-status-bar] [{:keys [doc translations] :as context}]
   [:.clj-status-bar] (if-let [flash (:flash doc)] 
                        (html/substitute (flash-bar flash))
-                       identity)
-  [:.clj-status-bar-text] (html/content (translations :status-bar/status-text)))
+                       identity))
 
 
 ;; DRAFTING HAS STARTED MESSAGE

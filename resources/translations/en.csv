@@ -1,10 +1,14 @@
-masthead,skip-to-navigation,Skip to navigation
-masthead,logo-title-attr,Go to home page
-masthead,objectives-link-title-attr,Go to the Objectives list
+masthead,skip-text,Skip to navigation
+masthead,logo-title,Go to home page
+masthead,objectives-link-title,Go to the Objectives list
 masthead,objectives-link,Objectives
-masthead,about-link-title-attr,Learn more about Objective[8]
+masthead,about-link-title,Learn more about Objective[8]
 masthead,about-link,About
-status-bar,status-text,ALPHA: we are still testing
+masthead,sign-out-title,Sign out
+masthead,sign-out-text,Sign out
+masthead,sign-in-title,Sign in
+masthead,sign-in-text,Sign in
+status-bar,text,ALPHA: we are still testing
 sign-in,doc-title,Sign in or Sign up | Objective[8]
 sign-in,doc-description,Sign in or Sign up to Objective [8]
 sign-in,page-title,Sign in or Sign up
@@ -136,12 +140,12 @@ answer-create,answer-label,Your answer
 answer-create,sign-in-reminder,You must sign in to add an answer
 learn-more,doc-title,Learn more | Objective[8]
 learn-more,doc-description,
-learn-more,page-title,Objective[8] 101
-learn-more,sub-title,What are the basics?
-learn-more,page-intro,Objective8 is a platform to enable collaborative policy making for democratic organisations.
-learn-more,page-content!,"<p><b>Policy</b> is used by governments and organisations to make consistent and fair decisions in order to achieve desired outcomes.</p><p>An <b>objective</b> is a change that could be achieved by introducing new policy.  For example: improving access to public housing, or increasing the safety of our roads.</p><p><b>Writers</b> work with each other and the community to draft policy.  They use the crowdsourced questions, answers and comments to produce <b>policy drafts</b><span class=""not-yet-implemented-footnote-marker"">*</span>.  These are further refined through cycles of feedback and redrafting.</p><p>You can get involved and have your say by creating and sharing objectives, offering your opinion through <b>comments</b>, asking and answering <b>questions</b>, suggesting policy writers, or even providing feedback on the policy drafts themselves.  The whole process is open and transparent.</p><p class=""helper-text""> <span class=""not-yet-implemented-footnote-marker"">*</span>As the site is still under development, these features have not yet been implemented. Check back soon!</p>"
-learn-more,get-started-button-text,Get started
-learn-more,get-started-button-title,Get started
+learn-more,heading,Objective[8] 101
+learn-more,sub-heading,What are the basics?
+learn-more,lede,Objective8 is a platform to enable collaborative policy making for democratic organisations.
+learn-more,detail!,"<p><b>Policy</b> is used by governments and organisations to make consistent and fair decisions in order to achieve desired outcomes.</p><p>An <b>objective</b> is a change that could be achieved by introducing new policy.  For example: improving access to public housing, or increasing the safety of our roads.</p><p><b>Writers</b> work with each other and the community to draft policy.  They use the crowdsourced questions, answers and comments to produce <b>policy drafts</b><span class=""not-yet-implemented-footnote-marker"">*</span>.  These are further refined through cycles of feedback and redrafting.</p><p>You can get involved and have your say by creating and sharing objectives, offering your opinion through <b>comments</b>, asking and answering <b>questions</b>, suggesting policy writers, or even providing feedback on the policy drafts themselves.  The whole process is open and transparent.</p><p class=""helper-text""> <span class=""not-yet-implemented-footnote-marker"">*</span>As the site is still under development, these features have not yet been implemented. Check back soon!</p>"
+learn-more,get-started,Get started
+learn-more,get-started-title,Get started
 invitation-sign-in,sign-in,sign in
 invitation-sign-in,please,Please
 invitation-sign-in,to,to invite a policy writer.
@@ -164,10 +168,6 @@ question-list,question-list-heading,Recently asked questions
 question-list,page-intro,"Gather background information such as opinions and experiences by asking a question.  Your question should be focussed and specific, as the answers will influence the policy drafting process."
 question-list,no-questions,There are no questions yet.
 question-list,questions-about,Questions about
-navigation-global,sign-out-title,Sign out
-navigation-global,sign-out-text,Sign out
-navigation-global,sign-in-title,Sign in
-navigation-global,sign-in-text,Sign in
 share-widget,google-plus-text,Google +1
 share-widget,url-label,URL to share
 share-widget,reddit-text,Submit to Reddit

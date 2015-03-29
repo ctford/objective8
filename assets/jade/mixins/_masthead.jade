@@ -1,7 +1,6 @@
 mixin statusBar
   .status-bar.clj-status-bar
-    p.clj-status-bar-text
-      | !ALPHA, we are still testing
+    p.l8n--status-bar--text !ALPHA, we are still testing
 
 mixin flashMessageSuccessBar
   .flash-message-success.clj-flash-message-bar.func--flash-bar
@@ -11,25 +10,25 @@ mixin mastheadContents()
   .clj-masthead-navigation
     a.masthead-nav-link(href="#navigation")
       i.fa.fa-bars
-      span.visuallyhidden.clj-masthead-skip-text !Skip to navigation
-    a.masthead-logo.clj-masthead-logo(href="/", title="!Go to home page", rel="home") Objective[8]
+      span.visuallyhidden.l8n--masthead--skip-text !Skip to navigation
+    a.masthead-logo.l8n--masthead--logo-title--attr--title(href="/", title="!Go to home page", rel="home") Objective[8]
     .masthead-large-screen-nav
-      a.clj-masthead-objectives-link(href="/objectives", title="!Go to the Objectives list") !Objectives
-      a.clj-masthead-about-link(href="/learn-more", title="!Learn more about Objective[8]") !About
+      a.l8n--masthead--objectives-link.l8n--masthead--objectives-link-title--attr--title(href="/objectives", title="!Go to the Objectives list") !Objectives
+      a.l8n--masthead--about-link.l8n--masthead--about-link-title--attr--title(href="/learn-more", title="!Learn more about Objective[8]") !About
 
 mixin mastheadSignedOut()
   .masthead.clj-masthead-signed-out
     +mastheadContents()
     .masthead-user-nav.clj-user-navigation-signed-out
-      a.masthead-sign-in.clj-masthead-sign-in(href="/sign-in", title="!Sign in")
+      a.masthead-sign-in.clj-masthead-sign-in.l8n--masthead--sign-in-title--attr--title(href="/sign-in", title="!Sign in")
         i.fa.fa-sign-in
-        span.clj-masthead-sign-in-text !Sign in
+        span.l8n--masthead--sign-in-text !Sign in
 
 mixin mastheadSignedIn()
   .masthead.clj-masthead-signed-in
     +mastheadContents()
     .masthead-user-nav.clj-user-navigation-signed-in
       span.masthead-username.clj-username JoeBloggs
-      a.masthead-sign-out.clj-masthead-sign-out(href="/sign-out", title="!Sign out")
+      a.masthead-sign-out.l8n--masthead--sign-out-title--attr--title(href="/sign-out", title="!Sign out")
         i.fa.fa-sign-out
-        span.clj-masthead-sign-out-text !Sign out
+        span.l8n--masthead--sign-out-text !Sign out

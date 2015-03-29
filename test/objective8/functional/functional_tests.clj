@@ -70,10 +70,15 @@
           (after :contents (do (wd/quit)
                                (integration-helpers/truncate-tables)
                                (core/stop-server)))]
+
          (fact "can add an objective"
                (try (wd/to "localhost:8080")
                     (wait-for-title "Objective[8]")
                     (screenshot "home_page")
+
+                    (wd/to "localhost:8080/learn-more") 
+                    (wait-for-title "Learn more | Objective[8]")
+                    (screenshot "learn_more_page")
 
                     (wd/click "a[href='/objectives']") 
                     (wait-for-title "Objectives | Objective[8]")
@@ -167,7 +172,7 @@
                            (wd/text ".func--up-score") => "1"
 
                            (catch Exception e
-                             (screenshot "Error-Can-vote-on-an-answer")
+                             (screenshot "Error-Can-up-vote-an-answer") 
                              (throw e))))
 
          (fact "Can invite a writer"
